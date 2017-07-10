@@ -1,0 +1,31 @@
+{
+  "name": "item_exchange",
+  "version": "1.0.0",
+  "description": "Web App - teste de estagio na Valemobi",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RodrigoPatrao/ItemExchange.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "ExpressJS",
+    "PostgreSQL"
+  ],
+  "author": "RodrigoPatrao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RodrigoPatrao/ItemExchange/issues"
+  },
+  "homepage": "https://github.com/RodrigoPatrao/ItemExchange#readme",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
+    "serve-favicon": "^2.4.3"
+  }
+}
