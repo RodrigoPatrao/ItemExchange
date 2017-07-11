@@ -1,5 +1,5 @@
 html, body{
-  margin-top: 60px;
+  margin-top: 55px;
 }
 .page-header{
   margin-top: 5px !important;
@@ -15,6 +15,6 @@ html, body{
 table {
   font-size: 12px !important;
 }
-table tbody td {
-  vertical-align: middle !important;
+table tbody tr {
+  vertical-align: bottom !important;
 }
