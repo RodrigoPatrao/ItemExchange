@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "item_exchange",
+    "password": "1234",
+    "database": "item_exchange_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "item_exchange",
+    "password": "1234",
+    "database": "item_exchange_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "item_exchange",
+    "password": "1234",
+    "database": "item_exchange_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
