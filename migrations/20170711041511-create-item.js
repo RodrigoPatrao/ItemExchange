@@ -15,10 +15,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       quantity: {
-        type: Sequelize.BIGINT
+        type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.BIGINT
+        type: Sequelize.STRING
+      },
+      operation: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
