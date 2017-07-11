@@ -3,7 +3,7 @@ var router = express.Router();
 var items = {};
 
 router.get('/items', function(req, res){
-  res.render('items');
+  res.render('items', { title: 'Mercadorias'});
 })
 
 module.exports = router;
