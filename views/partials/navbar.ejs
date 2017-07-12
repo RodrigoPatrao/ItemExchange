@@ -5,7 +5,26 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="/items">Mercadorias</a></li>
-      <li><a href="/operations">Operações</a></li>
+      <li class="dropdown">
+        <a href="/operations" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          Operações
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="/operations/Compra">Compra</a></li>
+          <li><a href="/operations/Venda">Venda</a></li>
+        </ul>
+        <script type="text/javascript">
+          $(function(){
+            $('#Compra').on('click', function(){
+              $.get("/operations/Compra");
+            });
+            $('#Venda').on('click', function(){
+              $.get("/operations/Venda");
+            });
+          });
+        </script>
+      </li>
     </ul>
   </div>
 </nav>
