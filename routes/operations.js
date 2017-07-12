@@ -12,12 +12,12 @@ router.get('/operations/:selectOperation', function(req, res){
   var op = req.params.selectOperation;
   switch(op){
     case 'Compra':
-      models.Item.findAll({ where: { operation: req.params.selectOperation }}).then(function(items){
+      models.Item.findAll({ where: { operation: req.params.selectOperation }, order: [[ "updatedAt", "DESC"]] }).then(function(items){
         res.render('operations', { title: 'Operações - Compra', items: items });
       })
       break;
     case 'Venda':
-      models.Item.findAll({ where: { operation: req.params.selectOperation }}).then(function(items){
+      models.Item.findAll({ where: { operation: req.params.selectOperation }, order: [[ "updatedAt", "DESC"]] }).then(function(items){
         res.render('operations', { title: 'Operações - Venda', items: items });
       })
       break;
