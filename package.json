@@ -4,7 +4,11 @@
   "description": "Web App - teste de estagio na Valemobi",
   "main": "app.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1",
+>>>>>>> 67b1141c495ecc3fb09cb5f4a8b8194b1f008d46
   },
   "repository": {
     "type": "git",
