@@ -2,19 +2,40 @@
 <% include partials/page_header %>
 <body>
   <% include partials/navbar %>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-2">
-        <p style="font-size: 32px;"><%= title %></p>
+  <div class="container-fluid">
+    <p style="font-size: 32px;"><%= title %></p>
+    <form class="form" method="post" id="itemForm">
+      <div class="form-group col-xs-2">
+        <label class="control-label" for="itemType">Tipo</label>
+        <input type="text" class="form-control" name="itemType" id="itemType" value="<%= edit.itemType %>" placeholder="Obrigatório, apenas letras.">
       </div>
-      <div class="pull-right">
-        <div class="col-xs-10" style="margin-top: 5px;">
-          <button type="button" name="add_item" class="btn btn-primary" data-toggle="modal" data-target="#add_item_modal">
-            <span class="glyphicon glyphicon-plus"></span>&nbsp;Adicionar Mercadoria
-          </button>
+      <div class="form-group col-xs-3">
+        <label class="control-label" for="itemName">Nome</label>
+        <input type="text" class="form-control" name="itemName" id="itemName" value="<%= edit.itemName %>"placeholder="Obrigatório, apenas letras.">
+      </div>
+      <div class="form-group col-xs-2">
+        <label class="control-label" for="quantity">Quantidade</label>
+        <input type="number" class="form-control" name="quantity" id="quantity" min="1" value="<%= edit.quantity || 1 %>" placeholder="Apenas números.">
+      </div>
+      <div class="form-group col-xs-2">
+        <label class="control-label" for="price">Preço</label>
+        <div class="input-group">
+          <span class="input-group-addon">R$</span>
+          <input type="text" class="form-control" name="price" id="price" value="<%= edit.price %>" placeholder="Apenas números.">
         </div>
       </div>
-    </div>
+      <div class="form-group col-xs-2">
+        <label class="control-label" for="operation">Operação</label>
+        <select class="form-control" name="operation" id="operation">
+          <option value="Compra">Compra</option>
+          <option value="Venda">Venda</option>
+        </select>
+      </div>
+      <div class="form-group col-xs-1">
+        <label style="width: 100%">&nbsp;</label>
+        <input type="submit" id="send" value="Gravar" class="btn btn-success">
+      </div>
+    </form>
     <table class="table table-hover table-striped table-condensed">
       <thead>
         <tr class="bg-primary">
@@ -27,70 +48,31 @@
         </tr>
       </thead>
       <tbody>
-        <% items.forEach(function(item){ %>
-          <tr>
-            <td><%= item.itemType %></td>
-            <td><%= item.itemName %></td>
-            <td><%= item.quantity %></td>
-            <td>R$&nbsp;<%= item.price %></td>
-            <td><%= item.operation %></td>
-            <td class="table-buttons">
-              <a href="/items/edit/<%= item.id %>" class="btn btn-warning btn-table btn-xs">
-                <span class="glyphicon glyphicon-pencil"></span>
-              </a>
-              <a href="/items/delete/<%= item.id %>" class="btn btn-danger btn-table btn-xs">
-                <span class="glyphicon glyphicon-trash"></span>
-              </a>
-            </td>
-          </tr>
+      <% items.forEach(function(item){ %>
+        <tr>
+          <td><%= item.itemType %></td>
+          <td><%= item.itemName %></td>
+          <td><%= item.quantity %></td>
+          <td>R$&nbsp;<%= item.price %></td>
+          <td><%= item.operation %></td>
+          <td class="table-buttons">
+            <a href="/items/edit/<%= item.id %>" class="btn btn-warning btn-table btn-xs">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href="/items/delete/<%= item.id %>" class="btn btn-danger btn-table btn-xs">
+              <span class="glyphicon glyphicon-trash"></span>
+            </a>
+          </td>
+        </tr>
         <% }) %>
       </tbody>
     </table>
-  </div>
-  <div class="modal fade" id="add_item_modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header bg-primary">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Adicionar Mercadoria</h4>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <form class="form" action="/items" method="post">
-              <div class="form-group col-xs-6">
-                <label for="itemType">Tipo</label>
-                <input type="text" class="form-control" name="itemType">
-              </div>
-              <div class="form-group col-xs-6">
-                <label for="itemName">Nome</label>
-                <input type="text" class="form-control" name="itemName">
-              </div>
-              <div class="form-group col-xs-4">
-                <label for="quantity">Quantidade</label>
-                <input type="number" class="form-control" name="quantity">
-              </div>
-              <div class="form-group col-xs-4">
-                <label for="price">Preço</label>
-                <div class="input-group">
-                  <span class="input-group-addon">R$</span>
-                  <input type="text" class="form-control" name="price">
-                </div>
-              </div>
-              <div class="form-group col-xs-4">
-                <label for="operation">Operação</label>
-                <select class="form-control" name="operation">
-                  <option value="Compra">Compra</option>
-                  <option value="Venda">Venda</option>
-                </select>
-              </div>
-              <div class="form-group col-xs-12">
-                <input type="submit" name="send" value="Gravar" class="btn btn-primary">
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    <nav aria-label="pager">
+      <ul class="pager">
+        <li><a href="/items/<%= dec %>" id="decrease-pager">Anterior</a></li>
+        <li><a href="/items/<%= inc %>" id="increase-pager">Próximo</a></li>
+      </ul>
+    </nav>
   </div>
 </body>
 <% include partials/page_footer %>

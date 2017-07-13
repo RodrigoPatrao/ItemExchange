@@ -8,7 +8,10 @@ html, body{
 .table-buttons {
   text-align: right;
 }
-table tbody td {
+table tbody td, table th {
   vertical-align: middle !important;
   font-size: 12px !important;
+}
+th {
+  cursor: pointer;
 }

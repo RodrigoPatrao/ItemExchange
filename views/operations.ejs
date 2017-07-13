@@ -20,29 +20,17 @@
       </thead>
       <tbody>
         <% items.forEach(function(item){ %>
-          <tr>
-            <td><%= item.operation %></td>
-            <td><%= item.itemType %></td>
-            <td><%= item.itemName %></td>
-            <td><%= item.quantity %></td>
-            <td>R$&nbsp;<%= item.price %></td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    </div>
-    <!-- <div class="modal fade" id="add_item_modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-    <div class="modal-content">
-    <div class="modal-header bg-primary">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title"></h4>
+        <tr>
+          <td><%= item.operation %></td>
+          <td><%= item.itemType %></td>
+          <td><%= item.itemName %></td>
+          <td><%= item.quantity %></td>
+          <td>R$&nbsp;<%= item.price %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
   </div>
-  <div class="modal-body">
-  <div class="row"></div>
-</div>
-</div>
-</div> -->
 </div>
 </body>
 <% include partials/page_footer %>
