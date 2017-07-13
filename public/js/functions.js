@@ -1,4 +1,3 @@
-
 $(function(){
   $('#itemType').on('blur', function(){
     alpha_validate($(this));
@@ -11,14 +10,22 @@ $(function(){
   });
   $('#itemForm').on('submit', function(e){
     e.preventDefault();
-    var input = $('input:first');
-    var ok = false;
+    var ok = 0;
     $('input[type="text"]').each(function(){
-      $(this).val() == '' ? ok=false : ok=true
+      hasValue($(this)) ? ok += 1 : ok = ok
     })
-    ok ? $(this)[0].submit() : $('input[value=""]').focus();
+    ok == 3 ? $(this)[0].submit() : $('input[value=""]').focus();
   })
 })
+var hasValue = function(obj){
+  var val = obj.val()
+  if( val == '' || val == 0){
+    $(this).val('');
+    return false;
+  }else {
+    return true;
+  }
+}
 var alpha_validate = function(obj){
   var alpha_test = /[0-9]+/;
   if (obj.val() == "" || alpha_test.test(obj.val())){

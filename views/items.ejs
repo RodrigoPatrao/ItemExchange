@@ -4,10 +4,10 @@
   <% include partials/navbar %>
   <div class="container-fluid">
     <p style="font-size: 32px;"><%= title %></p>
-    <form class="form" action="" method="post" id="itemForm">
+    <form class="form" method="post" id="itemForm">
       <div class="form-group col-xs-2">
         <label class="control-label" for="itemType">Tipo</label>
-        <input type="text" class="form-control" name="itemType" id="itemType" autofocus value="<%= edit.itemType %>" placeholder="Obrigatório, apenas letras.">
+        <input type="text" class="form-control" name="itemType" id="itemType" value="<%= edit.itemType %>" placeholder="Obrigatório, apenas letras.">
       </div>
       <div class="form-group col-xs-3">
         <label class="control-label" for="itemName">Nome</label>
@@ -15,7 +15,7 @@
       </div>
       <div class="form-group col-xs-2">
         <label class="control-label" for="quantity">Quantidade</label>
-        <input type="number" class="form-control" name="quantity" id="quantity" min="1" value="<%= edit.quantity %>" placeholder="Apenas números.">
+        <input type="number" class="form-control" name="quantity" id="quantity" min="1" value="<%= edit.quantity || 1 %>" placeholder="Apenas números.">
       </div>
       <div class="form-group col-xs-2">
         <label class="control-label" for="price">Preço</label>
@@ -48,25 +48,31 @@
         </tr>
       </thead>
       <tbody>
-        <% items.forEach(function(item){ %>
-          <tr>
-            <td><%= item.itemType %></td>
-            <td><%= item.itemName %></td>
-            <td><%= item.quantity %></td>
-            <td>R$&nbsp;<%= item.price %></td>
-            <td><%= item.operation %></td>
-            <td class="table-buttons">
-              <a href="/items/edit/<%= item.id %>" class="btn btn-warning btn-table btn-xs">
-                <span class="glyphicon glyphicon-pencil"></span>
-              </a>
-              <a href="/items/delete/<%= item.id %>" class="btn btn-danger btn-table btn-xs">
-                <span class="glyphicon glyphicon-trash"></span>
-              </a>
-            </td>
-          </tr>
+      <% items.forEach(function(item){ %>
+        <tr>
+          <td><%= item.itemType %></td>
+          <td><%= item.itemName %></td>
+          <td><%= item.quantity %></td>
+          <td>R$&nbsp;<%= item.price %></td>
+          <td><%= item.operation %></td>
+          <td class="table-buttons">
+            <a href="/items/edit/<%= item.id %>" class="btn btn-warning btn-table btn-xs">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+            <a href="/items/delete/<%= item.id %>" class="btn btn-danger btn-table btn-xs">
+              <span class="glyphicon glyphicon-trash"></span>
+            </a>
+          </td>
+        </tr>
         <% }) %>
       </tbody>
     </table>
+    <nav aria-label="pager">
+      <ul class="pager">
+        <li><a href="/items/<%= dec %>" id="decrease-pager">Anterior</a></li>
+        <li><a href="/items/<%= inc %>" id="increase-pager">Próximo</a></li>
+      </ul>
+    </nav>
   </div>
 </body>
 <% include partials/page_footer %>
