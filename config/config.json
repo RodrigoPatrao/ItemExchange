@@ -16,7 +16,7 @@
   "production": {
     "username": "item_exchange",
     "password": "1234",
-    "database": "process.env.DATABASE_URL",
+    "database": "postgres://clpzswrjkiilwi:dbce206f91118f401856295a55deb2585c17ca18e212f93d5a843497401d1bdf@ec2-23-21-111-81.compute-1.amazonaws.com:5432/d2ekn6b0mfp5qr",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
