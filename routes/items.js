@@ -8,16 +8,9 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get('/items/:curr?', function(req, res){
-  var inc = req.params.curr || 0;
-  var dec = req.params.curr || 0;
-  var val = req.params.curr || 0;
   var edit = {};
-  models.Item.findAll({ order: [["updatedAt", "DESC"]], offset: val, limit: 10 }).then(function(items){
-    if(inc < items.length)
-      inc = Number(val) + 10;
-    if(dec != 0)
-      dec = Number(val) - 10;
-    res.render('items', { title: 'Mercadorias', items: items, edit: edit, inc: inc, dec: dec });
+  models.Item.findAll({ order: [["updatedAt", "DESC"]] }).then(function(items){
+    res.render('items', { title: 'Mercadorias', items: items, edit: edit });
   })
 })
 
